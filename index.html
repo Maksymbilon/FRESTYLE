@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jump for Ukraine</title>
-<style>
-  #jumper {
-    transition: transform 1s ease-out;
-    cursor: pointer;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jump for Ukraine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #d0e7ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #jumper {
+      transition: transform 1s ease-out;
+      cursor: pointer;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin: 20px auto;
+      display: block;
+      max-width: 80vw;
+      object-fit: cover;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      min-height: 1.2em;
+      max-width: 90vw;
+    }
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    button, a {
+      background-color: #0070ba;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      min-width: 140px;
+    }
+    button:hover, a:hover {
+      background-color: #005fa3;
+    }
+    @media (max-width: 480px) {
+      #jumper {
+        width: 90vw;
+        height: auto;
+        max-height: 250px;
+      }
+      button, a {
+        min-width: 100%;
+        font-size: 18px;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Jump for Ukraine!</h1>
-<img
-  id="jumper"
-  src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
-  alt="Jumper"
-/>
-<div id="result" style="margin-top: 20px; font-weight: bold;"></div>
-
-<script>
-  console.log('Script loaded');
-  const jumper = document.getElementById('jumper');
-  const result = document.getElementById('result');
-  let jumping = false;
-
-  jumper.addEventListener('click', () => {
-    if (jumping) return;
-    jumping = true;
-    console.log('Jump started');
-
-    const height = Math.floor(Math.random() * 30) + 10;
-    jumper.style.transform = `translateY(-${height * 4}px)`;
-
-    setTimeout(() => {
-      console.log(`Jump ended at height ${height}`);
-      result.textContent = `Wow! You reached ${height} meters! Ready to support real athletes in Ukraine?`;
-      jumping = false;
-    }, 1000);
-  });
-</script>
-</body>
-</html>
+  <h1>🎿 Jump for Ukraine!</h1>
+  <p>Tap the jumper to launch! See how high you can jump!</p>
+  
+  <img
+    id="jumper"
+    src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
+    alt="Jumper"
+  />
+  
+  <div id="result"></div>
+  
+  <div class="buttons">
+    <button id="resetBtn">Try Again</button>
