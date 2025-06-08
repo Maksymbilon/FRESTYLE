@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     #jumper {
-      transition: transform 0.4s ease-out;
+      transition: transform 1s ease-out;
       cursor: pointer;
     }
   </style>
@@ -50,9 +50,24 @@
     jumper.addEventListener("click", () => {
       if (jumping) return;
       jumping = true;
+      console.log("Jump started");
 
-      const height = Math.floor(Math.random() * 30) + 10; // random jump height 10–40m
+      const height = Math.floor(Math.random() * 30) + 10; // 10–40м
       jumper.style.transform = `translateY(-${height * 4}px)`;
 
       setTimeout(() => {
-        result.textContent = `Wow! You reached
+        console.log(`Jump ended at height ${height}`);
+        result.textContent = `Wow! You reached ${height} meters! Ready to support real athletes in Ukraine?`;
+        result.classList.remove("hidden");
+        jumping = false;
+      }, 1000);
+    });
+
+    function resetJump() {
+      jumper.style.transform = "translateY(0)";
+      result.classList.add("hidden");
+      console.log("Reset jump");
+    }
+  </script>
+</body>
+</html>
