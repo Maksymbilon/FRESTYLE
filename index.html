@@ -8,8 +8,9 @@
   body {
     font-family: Arial, sans-serif;
     background: #d0e7ff;
-    color: #333;
-    margin: 0; padding: 20px;
+    color: #222;
+    margin: 0;
+    padding: 20px;
     text-align: center;
   }
   h1 {
@@ -17,8 +18,8 @@
   }
   #jumper {
     cursor: pointer;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     transition: transform 1s ease-out;
     margin: 20px auto;
@@ -26,44 +27,45 @@
   }
   #result {
     font-weight: bold;
-    min-height: 1.2em;
+    min-height: 1.5em;
     margin-top: 15px;
   }
   .buttons {
-    margin-top: 25px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
   }
   button, a {
-    background: #0070ba;
+    background-color: #0070ba;
     color: white;
     border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
+    padding: 14px 22px;
+    border-radius: 10px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
     text-decoration: none;
     cursor: pointer;
-    min-width: 140px;
+    min-width: 160px;
+    transition: background-color 0.3s ease;
   }
   button:hover, a:hover {
-    background: #005fa3;
+    background-color: #005fa3;
   }
   @media (max-width: 480px) {
     #jumper {
       width: 90vw;
       height: auto;
-      max-height: 250px;
+      max-height: 280px;
     }
     button, a {
       min-width: 100%;
-      font-size: 18px;
+      font-size: 19px;
     }
     .buttons {
       flex-direction: column;
-      gap: 12px;
+      gap: 15px;
     }
   }
 </style>
@@ -71,16 +73,42 @@
 <body>
 
 <h1>🎿 Jump for Ukraine!</h1>
-<p>Tap the jumper to launch! See how high you can jump!</p>
+<p>Tap the jumper image to jump. See how high you can reach!</p>
 
-<img
-  id="jumper"
-  src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
-  alt="Jumper"
-/>
+<img id="jumper" src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg" alt="Jumper" />
 
 <div id="result"></div>
 
 <div class="buttons">
   <button id="resetBtn">Try Again</button>
-  <a href="https://www.paypal.com/donate/?hosted_button_id=YAL3BE24Q8LW6" target="_blank" rel="noopener_
+  <a href="https://www.paypal.com/donate/?hosted_button_id=YAL3BE24Q8LW6" target="_blank" rel="noopener noreferrer" aria-label="Donate via PayPal">Donate via PayPal</a>
+  <a href="https://tronscan.org/#/address/TKyKYS4udQL5NBBCQqtrC3mGQBMfmfEFpa" target="_blank" rel="noopener noreferrer" aria-label="Donate via TRC20 Crypto">Donate via Crypto (TRC20 USDT)</a>
+</div>
+
+<script>
+  const jumper = document.getElementById('jumper');
+  const result = document.getElementById('result');
+  const resetBtn = document.getElementById('resetBtn');
+  let jumping = false;
+
+  jumper.addEventListener('click', () => {
+    if (jumping) return;
+    jumping = true;
+
+    const height = Math.floor(Math.random() * 30) + 10;
+    jumper.style.transform = `translateY(-${height * 5}px)`;
+
+    setTimeout(() => {
+      result.textContent = `Wow! You reached ${height} meters! Ready to support real athletes in Ukraine?`;
+      jumping = false;
+    }, 1000);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    jumper.style.transform = 'translateY(0)';
+    result.textContent = '';
+  });
+</script>
+
+</body>
+</html>
