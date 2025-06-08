@@ -1,73 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jump for Ukraine</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <style>
-    #jumper {
-      transition: transform 1s ease-out;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jump for Ukraine</title>
+<style>
+  #jumper {
+    transition: transform 1s ease-out;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+</style>
 </head>
-<body class="bg-blue-100 text-gray-800">
-  <div class="min-h-screen flex flex-col items-center justify-center text-center p-4">
-    <h1 class="text-3xl font-bold mb-4">🎿 Jump for Ukraine!</h1>
-    <p class="mb-6 text-lg">Click the jumper to launch! See how high you can go!</p>
+<body>
+<h1>Jump for Ukraine!</h1>
+<img
+  id="jumper"
+  src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
+  alt="Jumper"
+/>
+<div id="result" style="margin-top: 20px; font-weight: bold;"></div>
 
-    <div class="relative h-64 w-full max-w-sm bg-white border-2 border-blue-300 rounded-lg overflow-hidden">
-      <img
-        id="jumper"
-        src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
-        alt="Jumper"
-        class="w-24 h-24 rounded-full mx-auto mt-40 shadow-lg"
-      />
-    </div>
+<script>
+  console.log('Script loaded');
+  const jumper = document.getElementById('jumper');
+  const result = document.getElementById('result');
+  let jumping = false;
 
-    <div id="result" class="mt-6 text-xl font-semibold hidden"></div>
+  jumper.addEventListener('click', () => {
+    if (jumping) return;
+    jumping = true;
+    console.log('Jump started');
 
-    <div class="mt-4 space-x-4">
-      <button onclick="resetJump()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-        Try Again
-      </button>
-      <a
-        href="https://www.paypal.com/donate/?hosted_button_id=YAL3BE24Q8LW6"
-        target="_blank"
-        class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded"
-        >Donate via PayPal</a
-      >
-    </div>
-  </div>
+    const height = Math.floor(Math.random() * 30) + 10;
+    jumper.style.transform = `translateY(-${height * 4}px)`;
 
-  <script>
-    const jumper = document.getElementById("jumper");
-    const result = document.getElementById("result");
-
-    let jumping = false;
-
-    jumper.addEventListener("click", () => {
-      if (jumping) return;
-      jumping = true;
-      console.log("Jump started");
-
-      const height = Math.floor(Math.random() * 30) + 10; // 10–40м
-      jumper.style.transform = `translateY(-${height * 4}px)`;
-
-      setTimeout(() => {
-        console.log(`Jump ended at height ${height}`);
-        result.textContent = `Wow! You reached ${height} meters! Ready to support real athletes in Ukraine?`;
-        result.classList.remove("hidden");
-        jumping = false;
-      }, 1000);
-    });
-
-    function resetJump() {
-      jumper.style.transform = "translateY(0)";
-      result.classList.add("hidden");
-      console.log("Reset jump");
-    }
-  </script>
+    setTimeout(() => {
+      console.log(`Jump ended at height ${height}`);
+      result.textContent = `Wow! You reached ${height} meters! Ready to support real athletes in Ukraine?`;
+      jumping = false;
+    }, 1000);
+  });
+</script>
 </body>
 </html>
