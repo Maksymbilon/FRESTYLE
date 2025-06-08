@@ -1,95 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jump for Ukraine</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #d0e7ff;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jump for Ukraine</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #d0e7ff;
+    color: #333;
+    margin: 0; padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  #jumper {
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    transition: transform 1s ease-out;
+    margin: 20px auto;
+    display: block;
+  }
+  #result {
+    font-weight: bold;
+    min-height: 1.2em;
+    margin-top: 15px;
+  }
+  .buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  button, a {
+    background: #0070ba;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 140px;
+  }
+  button:hover, a:hover {
+    background: #005fa3;
+  }
+  @media (max-width: 480px) {
     #jumper {
-      transition: transform 1s ease-out;
-      cursor: pointer;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin: 20px auto;
-      display: block;
-      max-width: 80vw;
-      object-fit: cover;
-    }
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
-      min-height: 1.2em;
-      max-width: 90vw;
-    }
-    .buttons {
-      margin-top: 25px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      width: 90vw;
+      height: auto;
+      max-height: 250px;
     }
     button, a {
-      background-color: #0070ba;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      min-width: 140px;
+      min-width: 100%;
+      font-size: 18px;
     }
-    button:hover, a:hover {
-      background-color: #005fa3;
+    .buttons {
+      flex-direction: column;
+      gap: 12px;
     }
-    @media (max-width: 480px) {
-      #jumper {
-        width: 90vw;
-        height: auto;
-        max-height: 250px;
-      }
-      button, a {
-        min-width: 100%;
-        font-size: 18px;
-      }
-      .buttons {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <h1>🎿 Jump for Ukraine!</h1>
-  <p>Tap the jumper to launch! See how high you can jump!</p>
-  
-  <img
-    id="jumper"
-    src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
-    alt="Jumper"
-  />
-  
-  <div id="result"></div>
-  
-  <div class="buttons">
-    <button id="resetBtn">Try Again</button>
+
+<h1>🎿 Jump for Ukraine!</h1>
+<p>Tap the jumper to launch! See how high you can jump!</p>
+
+<img
+  id="jumper"
+  src="https://raw.githubusercontent.com/Maksymbilon/FRESTYLE/main/Abramenko.jpg"
+  alt="Jumper"
+/>
+
+<div id="result"></div>
+
+<div class="buttons">
+  <button id="resetBtn">Try Again</button>
+  <a href="https://www.paypal.com/donate/?hosted_button_id=YAL3BE24Q8LW6" target="_blank" rel="noopener_
